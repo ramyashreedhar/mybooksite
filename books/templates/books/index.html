@@ -1,0 +1,42 @@
+{% extends 'books/base.html' %}
+{% block content %}
+
+<div class=" col-md-12 jumbotron jtimg"   >
+    <div id="div2"><h4 style="color:purple">***The best way to congratulate a writer is by writing a review***</h4></div>
+ <h1 style="color:purple;text-align:center;">Ramya's Bookstore</h1>
+
+       {% load static %}
+        <img src="{% static 'books/book.png' %}"  class="img-responsive  rounded mx-auto d-block  " style="height:100px;width:100px;align:middle;" />
+
+  <div id="div1"><p style="text-align:center;color:purple">***Collection of all popular books***</p></div>
+</div>
+
+<ul>
+    {% for book in object_list  %}
+      <!-- <li><a href="{% url 'books:detail' book.id %}">{{book.name}}</a></li>-->
+<div class="col-lg-3 col-md-4 col-sm-6 " >
+  		<div class = "thumbnail">
+         <img src = "{{book.book_image}}" alt = "Generic placeholder thumbnail">
+          <div class = "caption">
+      	   <h3>{{book.name}}</h3>
+      	   <p>{{book.author}}</p>
+
+             <p>
+      	      <a href = "{% url 'books:detail' book.id %}" class = "btn btn-primary" role = "button">
+      	         Details
+     	       </a>
+
+     	       <a href = "#" class = "btn btn-danger" role = "button">
+     	          Delete
+     	       </a>
+         </p>
+          </div>
+
+
+
+</div>
+</div>
+    {% endfor %}
+</ul>
+
+{% endblock %}
